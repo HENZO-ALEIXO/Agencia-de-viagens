@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViajaFácil - Reserva de Destinos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">✈️ ViajaFácil</div>
+            <ul id="menu" class="menu">
+                <li><a href="#destinos">Destinos</a></li>
+                <li><a href="#simulador">Simulador</a></li>
+            </ul>
+            <button id="btn-tema">🌙 Escuro</button>
+        </nav>
+    </header>
+ 
+    <main>
+        <section class="hero">
+            <h1>Encontre o seu próximo destino</h1>
+            <p>Explore o Brasil com as melhores tarifas.</p>
+        </section>
+ 
+        <!-- Seção de Destinos -->
+        <section id="destinos" class="container">
+        <h2>Destinos em Destaque</h2>
+       
+        <div class="carrossel-wrapper">
+           
+            <!-- Botão Voltar -->
+            <button class="btn-seta" id="btn-prev">&#10094;</button>
+           
+            <div class="grid-cards" id="carrossel-cards">
+                <div class="card">
+                    <div class="card-img" style="background-color: #2e7d32;">🏕️</div>
+                    <h3>Monte Verde, MG</h3>
+                    <p>Clima de montanha e natureza.</p>
+                    <span class="preco">Diária: R$ 350</span>
+                    <button class="btn-favoritar">🤍 Favoritar</button>
+                    <button class="btn-comprar">🛒 Comprar Passagem</button>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-color: #1565c0;">🏙️</div>
+                    <h3>Curitiba, PR</h3>
+                    <p>Parques incríveis e cultura.</p>
+                    <span class="preco">Diária: R$ 280</span>
+                    <button class="btn-favoritar">🤍 Favoritar</button>
+                    <button class="btn-comprar">🛒 Comprar Passagem</button>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-color: #dfee11;">🏖️</div>
+                    <h3>Rio de Janeiro, RJ</h3>
+                    <p>Muita praia e diversão.</p>
+                    <span class="preco">Diária: R$ 500</span>
+                    <button class="btn-favoritar">🤍 Favoritar</button>
+                    <button class="btn-comprar"> 🛒 Comprar Passagem</button>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-color: #9449f7;">❄️</div>
+                    <h3>Gramado, RS</h3>
+                    <p>Muito frio e chocolate.</p> <!-- Ajustei o texto que estava repetido! -->
+                    <span class="preco">Diária: R$ 340</span>
+                    <button class="btn-favoritar">🤍 Favoritar</button>
+                    <button class="btn-comprar">🛒 Comprar Passagem</button>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-color: #eb59ba;">🏛️ </div>
+                    <h3>Brasília, DF</h3>
+                    <p>Visite a capital do Brasil!</p> <!-- Ajustei o texto que estava repetido! -->
+                    <span class="preco">Diária: R$ 250</span>
+                    <button class="btn-favoritar">🤍 Favoritar</button>
+                    <button class="btn-comprar">🛒 Comprar Passagem</button>
+                </div>
+            </div>
+ 
+            <!-- Botão Avançar -->
+            <button class="btn-seta" id="btn-next">&#10095;</button>
+           
+        </div>
+    </section>
+ 
+        <!-- Simulador de Reservas -->
+        <section id="simulador" class="container simulador-box">
+            <h2>Simulador de Estadia</h2>
+            <div class="form-group">
+                <label for="checkin">Data de Entrada:</label>
+                <input type="date" id="checkin">
+            </div>
+            <div class="form-group">
+                <label for="checkout">Data de Saída:</label>
+                <input type="date" id="checkout">
+            </div>
+            <button id="btn-calcular">Calcular Valor</button>
+           
+            <div class="resultado">
+                <p>Dias totais: <strong id="qtd-dias">0</strong></p>
+                <p>Valor total estimado: <strong id="valor-total">R$ 0,00</strong></p>
+            </div>
+        </section>
+    </main>
+ 
+    <script src="script.js"></script>
+</body>
+</html>
+ 
+
+ 
+
+ 
