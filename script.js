@@ -2,6 +2,27 @@ const containerCards = document.getElementById('carrossel-cards');
 const btnPrev = document.getElementById('btn-prev');
 const btnNext = document.getElementById('btn-next');
 const bntTema = document.getElementById('btn-tema');
+const btnCalcular = document.getElementById('btn-calcular');
+const selectDestino = document.getElementById('destino');
+const inputCheckin = document.getElementById('checkin');
+const inputCheckout = document.getElementById('checkout');
+const spanDias = document.getElementById('qtd-dias');
+const spanTotal = document.getElementById('valor-total');
+const formatoMoeda = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+});
+
+// Limpa a estimativa quando os dados mudam para não mostrar um total antigo.
+function limparResultado() {
+    spanDias.textContent = '0';
+    spanTotal.textContent = formatoMoeda.format(0);
+}
+
+[selectDestino, inputCheckin, inputCheckout].forEach(function(campo) {
+    campo.addEventListener('input', limparResultado);
+    campo.addEventListener('change', limparResultado);
+});
  
 // O valor em pixels que o carrossel vai andar a cada clique
 // 320 é ideal porque é a largura do card (300px) + o gap (20px)
@@ -49,11 +70,12 @@ bntTema.addEventListener('click', function() {
             }
      
             // 2. Converte as strings de data em objetos Date do JavaScript
-            const dataEntrada = new Date(inputCheckin.value);
-            const dataSaida = new Date(inputCheckout.value);
+            // valueAsNumber usa UTC, evitando diferenças causadas pelo horário de verão.
+            const dataEntrada = inputCheckin.valueAsNumber;
+            const dataSaida = inputCheckout.valueAsNumber;
      
             // 3. Validação: a data de saída precisa ser DEPOIS da data de entrada
-            if (dataSaida <= dataEntrada) {
+            if (!Number.isFinite(dataEntrada) || !Number.isFinite(dataSaida) || dataSaida <= dataEntrada) {
                 alert('A data de saída precisa ser depois da data de entrada!');
                 return;
             }
@@ -69,7 +91,6 @@ bntTema.addEventListener('click', function() {
             const valorTotal = diasTotais * valorDiaria;
      
             // 7. Exibe os resultados na tela
-            spanDias.innerText = diasTotais;
-            spanTotal.innerText = 'R$ ' + valorTotal.toFixed(2).replace('.', ',');
+            spanDias.textContent = diasTotais;
+            spanTotal.textContent = formatoMoeda.format(valorTotal);
         });
-     
